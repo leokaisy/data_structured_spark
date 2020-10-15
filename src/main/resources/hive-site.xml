@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<configuration>
+<!--配置mysql的连接字符串--> 
+<property> 
+<name>javax.jdo.option.ConnectionURL</name> 
+<value>jdbc:mysql://sparkunique:3306/hive?useSSL=false</value>
+<description>JDBC connect string for a JDBC metastore</description> 
+</property> 
+<!--配置mysql的连接驱动--> 
+<property> 
+<name>javax.jdo.option.ConnectionDriverName</name> 
+<value>com.mysql.jdbc.Driver</value> 
+<description>Driver class name for a JDBC metastore</description> 
+</property> 
+<!--配置登录mysql的用户--> 
+<property> 
+<name>javax.jdo.option.ConnectionUserName</name> 
+<value>root</value> 
+<description>username to use against metastore database</description> 
+</property> 
+<!--配置登录mysql的密码--> 
+<property> 
+<name>javax.jdo.option.ConnectionPassword</name> 
+<value>000000</value> 
+<description>password to use against metastore database</description> 
+</property>
+
+<!--hive仓库在hdfs的位置--> 
+<property> 
+<name>hive.metastore.warehouse.dir</name> 
+<value>/user/hive/warehouse</value> 
+<description>location of default database for the warehouse</description> 
+</property> 
+<!-- 该参数主要指定Hive的临时文件存储目录 --> 
+<property> 
+<name>hive.exec.scratchdir</name> 
+<value>/tmp/hive</value> 
+</property>
+
+<!--hive工作的本地临时存储空间--> 
+<property> 
+<name>hive.exec.local.scratchdir</name> 
+<value>/opt/module/hive-2.1.1/iotmp/root</value> 
+</property> 
+<!--如果启用了日志功能，则存储操作日志的顶级目录--> 
+<property> 
+<name>hive.server2.logging.operation.log.location</name> 
+<value>/opt/module/hive-2.1.1/iotmp/root/operation_logs</value> 
+</property> 
+<!--Hive运行时结构化日志文件的位置--> 
+<property> 
+<name>hive.querylog.location</name> 
+<value>/opt/module/hive-2.1.1/iotmp/root</value> 
+</property> 
+<!--用于在远程文件系统中添加资源的临时本地目录--> 
+<property> 
+<name>hive.downloaded.resources.dir</name> 
+<value>/opt/module/hive-2.1.1/iotmp/${hive.session.id}_resources</value> 
+</property> 
+<!--远处亚稳态的节俭URI。客户端用于连接远端转移。--> 
+<property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://sparkunique:9083</value>
+</property> 
+<!--是否在Hive提示中显示当前数据库。--> 
+<property> 
+<name>hive.cli.print.current.db</name> 
+<value>false</value> 
+</property> 
+<!--让Hive决定是否自动运行本地模式--> 
+<property> 
+<name>hive.exec.mode.local.auto</name> 
+<value>false</value> 
+</property>
+<property>
+    <name>hive.metastore.schema.verification</name>
+    <value>false</value>
+</property>
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>10000</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.bind.host</name>
+        <value>sparkunique</value>
+    </property>
+    <property>
+        <name>hive.aux.jars.path</name>
+        <value>/opt/module/hive-2.1.1/lib/</value>
+    </property>
+    <property>
+        <name>hive.metastore.local</name>
+        <value>false</value>
+    </property>
+</configuration>
